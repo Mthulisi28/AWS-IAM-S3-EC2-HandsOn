@@ -1,23 +1,44 @@
 # AWS IAM, S3, EC2 Hands-On
 
-This repository documents my hands-on exercises in AWS, focusing on:
+This repository documents my hands-on exercises in AWS, focusing on **Identity and Access Management (IAM)**, **Amazon S3**, and **Amazon EC2**.  
 
-- Creating IAM users and custom policies
-- Restricting access with read-only S3 policies
-- Fine-grained EC2 policies (specific instance type + region)
-- Using IAM Policy Simulator to test permissions
+## 📌 What I Practiced
+- Creating IAM users with different levels of access
+- Writing **custom IAM policies**
+- Restricting access by **region** and **resource type**
+- Using **IAM Policy Simulator** to test permissions before applying
+- Enforcing **least privilege** with S3 read-only and EC2 restrictions
 
-## IAM Users
+## 👤 IAM Users
+- **DemoUser** → S3 access (read-only)  
+- **DemoUser1** → Fine-grained EC2 + S3 access  
 
-- DemoUser: read-only S3 access
-- DemoUser1: fine-grained EC2 + S3 permissions
+## 📜 Policies
+1. **S3 Read-Only with Region Restriction**  
+   - File: `IAM/DemoUser1S3ReadOnly.json`  
+   - Grants read-only S3 access, restricted to `us-east-1`.  
 
-## Policies Included
+2. **EC2 Restriction Policy**  
+   - File: `IAM/EC2MicroUSEast1.json`  
+   - Allows launching EC2 instances but only a specific type (`t2.micro`) in `us-east-1`.  
+   - Tested via Policy Simulator (EC2 blocked in free tier).  
 
-- `DemoUser1S3ReadOnly.json`: Read-only access to a specific bucket, restricted to us-east-1
-- `EC2MicroUSEast1.json`: EC2 access only for t2.micro in us-east-1
+## 🪣 S3
+- Created a bucket `demouser1-test-bucket`  
+- Attached policy restricting **read-only access**  
 
-## Notes
+## 🖥️ EC2
+- Created a **restricted policy** for EC2 instance launch.  
+- Verified using **Policy Simulator**.  
 
-- EC2 tests simulated due to Free Tier limitations
-- Policy Simulator used for multi-service access testing
+## 📖 Notes
+- EC2 tests simulated due to Free Tier limitations  
+- Hands-on reinforced key AWS concepts:
+  - IAM users, policies, and permissions boundaries
+  - Region-specific access control
+  - Testing before deploying policies
+
+---
+
+### 🔗 Next Steps
+I will continue adding more exercises as I progress through **AWS Cloud Practitioner** and **Solutions Architect Associate** preparation.
